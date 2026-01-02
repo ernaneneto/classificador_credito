@@ -19,7 +19,7 @@ Projeto desenvolvido para automatizar e otimizar o processo de análise de créd
 5. **RPA de Exportação:** Geração automática de relatórios em Excel para o departamento financeiro.
 
 ## 📋 Como Rodar
-1. Configure o arquivo `.env` com suas credenciais do MySQL.
+1. Configure o arquivo `.env.example` com suas credenciais do MySQL.
 2. Instale as dependências: `pip install -r requirements.txt`
 3. **Treine o modelo:** `python main.py`
 4. **Inicie o WebService (API):** `python api.py`

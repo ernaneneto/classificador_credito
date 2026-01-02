@@ -19,6 +19,9 @@ def analisar_credito():
     predicao = modelo_ia.predict(entrada)
     status = "Aprovado" if predicao[0] == 1 else "Negado"
 
+    if status == "Negado" and renda > 3000:
+        status = "Revisão Manual"
+
     # 2. Salva no Banco de Dados
     dados_final = pd.DataFrame([{
         'nome_cliente': nome,
