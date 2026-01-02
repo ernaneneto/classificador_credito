@@ -61,13 +61,13 @@ try:
 
     with c1:
         st.markdown("### 📈 Resumo de Decisões")
-        # Gráfico de barras horizontal fica mais moderno
+        # Gráfico de barras horizontal
         contagem = df['Decisão da IA'].value_counts()
         st.bar_chart(contagem, color="#007bff")
 
     with c2:
         st.markdown("### 🎯 Perfil de Risco (Score vs Renda)")
-        # Gráfico de dispersão com nomes bonitos nos eixos
+        # Gráfico de dispersão
         st.scatter_chart(
             data=df, 
             x='Score de Crédito', 
