@@ -34,5 +34,5 @@ Diferente de projetos locais, esta solução utiliza uma arquitetura híbrida e 
 3. **Variáveis de Ambiente:** Configure dotenv com seu `DB_HOST`(Endpoint AWS), `DB_USER` e `DB_PASSWORD` e `DB_NAME`, no arquivo `.env.example` 
 4. **Treine o modelo:** `python main.py`
 4. **API:** Inicie o serviço de recebimento `python api.py`
-5. **Dashboard:** Para visualizar os gráficos `streamlit run dashboard.py`
+5. **Dashboard:** Para visualizar os gráficos `streamlit run dashboard.py` (URL: https://dashboard-credito-aws.streamlit.app)
 6. **Execute o RPA:** Gere o relatório financeiro `python rpa_export.py`
