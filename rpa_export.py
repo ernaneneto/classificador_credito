@@ -11,7 +11,10 @@ password = os.getenv("DB_PASSWORD")
 host = os.getenv("DB_HOST")
 db = os.getenv("DB_NAME")
 
-engine = create_engine(f'mysql+mysqlconnector://{user}:{password}@{host}/{db}')
+engine = create_engine(
+    f'mysql+mysqlconnector://{user}:{password}@{host}/{db}',
+        connect_args={'connect_timeout':10}
+)
 
 #Executando RPA
 def executar_rpa():
