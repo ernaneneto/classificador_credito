@@ -1,27 +1,38 @@
-# 🏦 Sistema Inteligente de Análise de Crédito
+## 🏦 Sistema Inteligente de Análise de Crédito
 
-Projeto desenvolvido para automatizar e otimizar o processo de análise de crédito em cooperativas, utilizando Inteligência Artificial, Banco de Dados Relacional, Dashboard e API REST.
+Este projeto simula um ecossistema financeiro completo: desde a entrada de dados via API, decisão por Inteligência Artificial, persistência em nuvem (AWS RDS), monitoramento por Dashboard e fechamento de processos via RPA.
+
+## 🌐 Arquitetura da Solução
+
+Diferente de projetos locais, esta solução utiliza uma arquitetura híbrida e distribuída:
+
+* **Camada de Dados:** Instância gerenciada AWS RDS (MySQL) garantindo alta disponibilidade.
+* **Inteligência:** Modelo de Classificação treinado com Scikit-Learn integrado à API.
+* **Interface Cloud:** Dashboard hospedado no Streamlit Cloud para acesso remoto.
+* **Integração:** API REST pronta para receber requisições de sistemas legados ou mobile.
 
 ## 🚀 Tecnologias Utilizadas
-* **Linguagem:** Python 3.x (Ambiente isolado com `venv`)
-* **IA/Machine Learning:** Scikit-Learn (Decision Tree Classifier)
-* **Banco de Dados:** MySQL com SQLAlchemy
-* **Framework Web:** Flask (WebService/API REST)
+* **Cloud:** AWS RDS (Relational Database Service).
+* **Linguagem:** Python 3.12+ (Ambiente isolado com `venv`)
+* **IA/ML:** Scikit-Learn (Decision Tree), Pandas.
+* **Banco de Dados:** MySQL com SQLAlchemy (ORM).
+* **API/Web:** Flask & Postman/Thunder Client.
 * **Dashboard:** Streamlit
-* **Automação (RPA):** Pandas & Openpyxl
-* **Segurança:** Dotenv (Variáveis de Ambiente)
+* **Automação (RPA):** Pandas & Openpyxl para geração de relatórios .xlsx.
+* **Segurança:** Dotenv (Variáveis de Ambiente)=
 
 ## 🛠️ Funcionalidades
-1. **Motor de IA:** Analisa renda e score para tomada de decisão automática.
-2. **WebService (API):** Interface para integração com sistemas externos (App/Web) via JSON.
-3. **Persistência:** Gravação de logs de análise em banco de dados SQL para conformidade e auditoria.
-4. **Dashboard:** Visualização em tempo real de taxas de aprovação e métricas financeiras.
-5. **RPA de Exportação:** Geração automática de relatórios em Excel para o departamento financeiro.
-
+1. **Ingestão:** Os dados de crédito são enviados via JSON para o endpoint /analisar da API Flask.
+2. **Processamento:** O motor de IA classifica a proposta como "Aprovado" ou "Reprovado".
+3. **Persistência:** O resultado é gravado instantaneamente no banco de dados na AWS.
+4. **Monitoramento:** O Dashboard consome os dados da nuvem e exibe métricas de risco e volume financeiro.
+5. **RPA de Exportação:** Um robô de automação busca apenas os "Aprovados" no banco e gera o arquivo para o setor de pagamentos.
+ 
 ## 📋 Como Rodar
-1. Configure o arquivo `.env.example` com suas credenciais do MySQL.
-2. Instale as dependências: `pip install -r requirements.txt`
-3. **Treine o modelo:** `python main.py`
-4. **Inicie o WebService (API):** `python api.py`
-5. **Inicie o dashboard:** `streamlit run dashboard.py`
-6. **Execute o RPA:** `python rpa_export.py` (quando desejar gerar o relatório)
+1. **Ambiente:** Crie o ambiente virtual `python -m venv venv`
+2. **Instale as dependências:** `pip install -r requirements.txt`
+3. **Variáveis de Ambiente:** Configure dotenv com seu `DB_HOST`(Endpoint AWS), `DB_USER` e `DB_PASSWORD` e `DB_NAME`, no arquivo `.env.example` 
+4. **Treine o modelo:** `python main.py`
+4. **API:** Inicie o serviço de recebimento `python api.py`
+5. **Dashboard:** Para visualizar os gráficos `streamlit run dashboard.py`
+6. **Execute o RPA:** Gere o relatório financeiro `python rpa_export.py`
